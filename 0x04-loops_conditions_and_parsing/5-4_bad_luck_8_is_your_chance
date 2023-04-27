@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#Script that loops from 1 to 10 qnd displays:
+# "bad luck" for the 4th loop iteration
+# "good luck" for the 8th loop iteration
+# "Best School" for other iterations
+
+a=0
+
+while [ $a -lt 10 ]
+do
+  if [ $a -eq 3 ]
+  then
+    echo "bad luck"
+  elif [ $a -eq 7 ]
+  then
+    echo "good luck"
+  else
+    echo "Best School"
+  fi
+  (( a++ ))
+done
