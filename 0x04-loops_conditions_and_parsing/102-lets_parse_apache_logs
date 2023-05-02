@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Script that display visitor IP along with HTTP status log from Apache log file
+
+awk '{print $1, $9}' apache-access.log
