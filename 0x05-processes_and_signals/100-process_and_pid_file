@@ -6,18 +6,14 @@
 #   Displays "Y U no love me?!" upon receiving a SIGINT
 #   Deletes the file /var/run/myscript.pid and terminates upon receiving a SIGQUIT or SIGTERM.
 
-killer() {
-  rm /var/run/myscript.pid
-  exit
-}
+trap "echo 'Y U no love me?!'" SIGINT
+trap "echo 'I hate the kill command'; sudo rm /var/run/myscript.pid; exit" SIGTERM
+trap "sudo rm /var/run/myscript.pid; exit" SIGQUIT
 
-echo "$$" > /var/run/myscript.pid
-
-while true
+sudo touch /var/run/myscript.pid
+i=1
+while [ "$i" -eq 1 ]
 do
-  echo "To infinity and beyond"
-  sleep 2
-  trap 'echo "Y U no love me?!"' SIGINT
-  trap 'echo "I hate the kill command" && terminator' SIGTERM
-  trap 'killer' SIGQUIT
+	echo "To infinity and beyond"
+	sleep 2
 done
