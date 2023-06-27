@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# fixes an Apache server in a container
+
+sudo service apache2 start
