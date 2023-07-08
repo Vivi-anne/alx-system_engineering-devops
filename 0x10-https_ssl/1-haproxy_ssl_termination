@@ -33,18 +33,18 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend vivianne_web_frontend
+frontend web_frontend
     bind *:80
     mode http
     http-request set-header X-Forwarded-Proto http
-    default_backend vivianne_web_backend
+    default_backend web_backend
 
-frontend web_frontend_secure-https
+frontend web_frontend-https
     bind *:443 ssl crt /etc/haproxy/certs/www.viviannek.tech.pem
     http-request set-header X-Forwarded-Proto https
     default_backend web_backend
 
-backend vivianne_web_backend
+backend web_backend
     balance roundrobin
     server 199821-web-01 34.224.1.159:80 check
     server 199821-web-02 34.239.254.245:80 check
