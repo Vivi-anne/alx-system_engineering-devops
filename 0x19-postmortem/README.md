@@ -9,12 +9,12 @@ A postmortem is a tool widely used in the tech industry. After any outage, the t
 
 **Postmortem: Web Stack Outage Incident - August 10, 2023**
 
-**Issue Summary:**
+## **Issue Summary:**
 Duration: August 10, 2023, 3:30 PM - 5:15 PM (UTC)
 Impact: Web Application Unavailability, 25% of Users Affected
 Root Cause: Database Connection Pool Exhaustion
 
-**Timeline:**
+## **Timeline:**
 - 3:30 PM: Issue detected as monitoring system triggered alerts for increased latency.
 - 3:35 PM: Incident response team alerted.
 - 3:47 PM: Investigation and root cause analysis initiated.
@@ -22,12 +22,12 @@ Root Cause: Database Connection Pool Exhaustion
 - 4:45 PM: Service restored and confirmed operational.
 - 5:15 PM: Follow-up actions planned.
 
-**Root Cause and Resolution:**
+## **Root Cause and Resolution:**
 **Root Cause:** The root cause of the outage was an incorrect configuration of the database connection pooling settings. The connection pool was set to a lower value than required by the increasing traffic, causing the available connections to be exhausted quickly. As a result, new incoming requests were delayed or rejected.
 
 **Resolution:** To address the issue, the connection pool settings were reconfigured to increase the maximum allowed connections, effectively accommodating the current traffic load. Additionally, connection timeout settings were optimized to ensure timely release of unused connections back to the pool. These adjustments prevented connection exhaustion and improved overall application performance.
 
-**Corrective and Preventative Measures:**
+## **Corrective and Preventative Measures:**
 **Improvements/Fixes:**
 1. Implement automated load testing during continuous integration to catch resource-related regressions early.
 2. Enhance monitoring and alerts for abnormal database connection usage patterns.
@@ -40,8 +40,8 @@ Root Cause: Database Connection Pool Exhaustion
 4. Conduct a thorough review of the application's resource consumption patterns to identify any other potential bottlenecks.
 5. Enhance documentation and training for engineers on best practices for configuring and managing connection pools.
 
-**Lessons Learned:**
+## **Lessons Learned:**
 This incident highlighted the critical importance of proper resource configuration in maintaining application stability. It also emphasized the need for collaborative cross-team communication during troubleshooting. By implementing proactive monitoring and refining incident response processes, we aim to mitigate similar issues in the future and enhance the overall reliability of our web application.
 
-**Conclusion:**
+## **Conclusion:**
 This postmortem report provides insights into the service outage incident, its impact, root causes, and the steps taken to address it. By implementing the recommended measures, we aim to prevent similar incidents, enhance our service's reliability, and improve our incident response processes.
